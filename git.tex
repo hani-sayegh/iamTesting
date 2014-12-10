@@ -1,0 +1,140 @@
+\documentclass[a4paper, fontsize=12pt, twoside]{article} % A4 paper and 11pt font size
+
+\usepackage{xcolor}
+%\pagecolor{black!100}
+%\color{blue!60}
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+%\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers	
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+
+
+
+
+\newcommand{\Problem}[1]{{\large \underline{Problem #1}}}
+\begin{document}
+	\section{What is Git}
+	\begin{enumerate}
+		\item Used to tracking changes, especilly text.
+		\item VCS: Version control system.
+		\item SCM: Source code management.
+		\item It is a distributed version control system:
+			\begin{enumerate}
+				\item Different users or teams of users maintain their own repository, instead of working from a central one.
+				\item Changes are stored as ``changed sets'' or ``patches'', this tracks changes and not versions.
+				\item No need to communicate with a central server.
+				\item Faster.
+				\item No network access required.
+				\item No single failure point.
+			\end{enumerate}
+	\end{enumerate}
+\section{Configuring Git}
+\begin{enumerate}
+	\item There are three places where git stores configuration information.
+		\begin{enumerate}
+			\item				System: /etc/gitconfig
+			\item				User: ~/.gitconfig
+			\item				Project: my\_project/.git/config
+		\end{enumerate}
+	\item Commands for each:
+		\begin{enumerate}
+			\item git config --system 
+			\item git config --global
+			\item git config
+		\end{enumerate}
+	\item To dislpay configurations use git config --list  OR u can specify which one.
+\end{enumerate}
+\section{Getting Started}
+\begin{enumerate}
+	\item git init //Initialize repository
+	\item To stop VC then remove .git file.
+	\item Usually only ever need to edit the config file in .git.
+	\item It contains the project configurations.
+	\item Basic git workflow:
+		\begin{enumerate}
+			\item make changes. //Add a new file
+			\item add the changes. //git add .
+			\item commit changes to the repository with message. //git commit -m "Initial commit"
+		\end{enumerate}
+	\item Write commit in the present tense.
+	\item git log				
+	\item git log --help
+\end{enumerate}
+\section{Git Concepts and Architecture}
+\begin{enumerate}
+	\item Git uses the three-tree architecture.
+	\item This allows you to choose what you would like to commit.
+	\item The HEAD pointer is a reference to the most recent commint of the checkedout branch.
+	\item SHA is a unique 40 character hexadecimal string assigned to each commit.
+\end{enumerate}
+\section{Making Chnages to Files}
+\begin{enumerate}
+	\item git status //Shows difference between the working directory, staging index, and the repository.
+	\item git diff //Compare changes for repository and staging index between working directory.
+	\item git diff --staged //Compare changes between repository and staging index.
+	\item git rm file\_name.
+	\item git mv file newName //Renaming or moving are the same.
+\end{enumerate}
+\section{Using Git with a Rreal Project}
+\begin{enumerate}
+	\item git commit -am "Initial commit" //Does all in one go, caveat, if u delete a file or it is not tracked this will not commit it.
+\end{enumerate}
+	
+\section{Remotes}
+\begin{enumerate}
+	\item You push your repository to the remote server.
+	\item This create a new pointer to point at the latest commit, known as origin/master.
+	\item You need to pull changes from other people by using a fetch.
+	\item If your master is out of sync with the latest commint then need to merge.
+	\item git remote gives list of all remotes it knows about.
+	\item git remote add <name> <url>
+	\item Can have as many remotes as you would like, usually first one is known as origin.
+	\item git remote rm <name> //To remove remote.
+		
+	\item git clone <url> [newName]		
+	\item Fetch syncronizes origin/master with remote repository.(Need Internet).
+	\item git fetch //Need name if we have more than 1 repository.
+	\item fetch only updates origin/master, not master.
+	\item Tips:
+		\begin{enumerate}
+			\item fetch before you work.
+			\item fetch before you push.
+			\item fetch often.
+			\item origin/master is just a remote brach, though we can not check it out.
+			\item Once you fetch you need to merge.
+			\item git pull = git fetch + git merge.
+			\item git branch <name> <from>
+			\item git branch -d <name> //This deletes branch <name>
+		\end{enumerate}	
+	\item git push origin :<branch> //Delete branch
+	\item git push origin --delete <branch> //This is better
+	\item git log p <branch>..origin/<branch>
+
+	
+\end{enumerate}
+              
+\end{document}
+
